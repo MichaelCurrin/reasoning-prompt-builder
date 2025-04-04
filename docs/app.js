@@ -182,7 +182,7 @@ function PromptBuilder() {
             onChange={(e) =>
               updateSection(SECTION_KEYS.RETURN_FORMAT, e.target.value)
             }
-            placeholder="e.g. A bullet list. \ne.g. A short blog post. \ne.g. Return a JSON object with: title (string), key_findings (array of strings), methodology (string), and limitations (array of strings)."
+            placeholder={"e.g. A bullet list. \ne.g. A short blog post. \ne.g. Return a JSON object with: title (string), key_findings (array of strings), methodology (string), and limitations (array of strings)."}
             isRequired={true}
           />
           <InputField
@@ -233,7 +233,7 @@ function PromptBuilder() {
             onChange={(e) =>
               updateSection(SECTION_KEYS.EVALUATION_CRITERIA, e.target.value)
             }
-            placeholder="e.g.\n- Relevance to the topic \n- thoroughness in covering all points\n- accuracy of information\n- adherence to the specified format."
+            placeholder={'e.g.\n- Relevance to the topic \n- thoroughness in covering all points\n- accuracy of information\n- adherence to the specified format.'}
             isRequired={false}
           />
         </div>
