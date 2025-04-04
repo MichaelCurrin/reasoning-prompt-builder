@@ -169,7 +169,7 @@ function PromptBuilder() {
           <h2>Required Inputs</h2>
           <InputField
             id="section-goal"
-            label="Goal"
+            label="Goal *"
             value={sections[SECTION_KEYS.GOAL].content}
             onChange={(e) => updateSection(SECTION_KEYS.GOAL, e.target.value)}
             placeholder="e.g. Create a concise technical summary of the provided research paper, highlighting key findings and methodology"
@@ -177,7 +177,7 @@ function PromptBuilder() {
           />
           <InputField
             id="section-format"
-            label="Return Format"
+            label="Return Format *"
             value={sections[SECTION_KEYS.RETURN_FORMAT].content}
             onChange={(e) =>
               updateSection(SECTION_KEYS.RETURN_FORMAT, e.target.value)
@@ -187,7 +187,7 @@ function PromptBuilder() {
           />
           <InputField
             id="section-warnings"
-            label="Warnings"
+            label="Warnings *"
             value={sections[SECTION_KEYS.WARNINGS].content}
             onChange={(e) =>
               updateSection(SECTION_KEYS.WARNINGS, e.target.value)
