@@ -243,8 +243,8 @@ function PromptBuilder() {
           <div className="result-container">
             <button
               className="button copy-button"
+              style={{ width: '100px' }}
               onClick={copyToClipboard}
-              style={{ minWidth: '120px' }}
             >
               {copyStatus} 📋
             </button>
