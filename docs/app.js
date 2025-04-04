@@ -9,7 +9,7 @@
  *
  * @returns {JSX.Element} The PromptBuilder component
  */
-const PromptBuilder = () => {
+function PromptBuilder() {
   const [sections, setSections] = React.useState([
     { title: 'Goal', content: '' },
     { title: 'Return Format', content: '' },
@@ -27,28 +27,28 @@ const PromptBuilder = () => {
    * @param {number} index - The index of the section to update
    * @param {string} content - The new content
    */
-  const updateSection = (index, content) => {
+  function updateSection(index, content) {
     const newSections = [...sections];
     newSections[index] = { ...newSections[index], content };
     setSections(newSections);
-  };
+  }
 
   /**
    * Generates the formatted prompt from all sections.
    *
    * @returns {string} The formatted prompt text
    */
-  const getFormattedPrompt = () => {
+  function getFormattedPrompt() {
     return sections
       .filter((section) => section.content.trim())
       .map((section) => `## ${section.title}\n${section.content}`)
       .join('\n\n');
-  };
+  }
 
   /**
    * Copies the formatted prompt to clipboard.
    */
-  const copyToClipboard = async () => {
+  async function copyToClipboard() {
     try {
       await navigator.clipboard.writeText(getFormattedPrompt());
       setCopyStatus('Copied!');
@@ -57,7 +57,7 @@ const PromptBuilder = () => {
       setCopyStatus('Failed to copy');
       setTimeout(() => setCopyStatus('Copy'), 2000);
     }
-  };
+  }
 
   const formattedPrompt = getFormattedPrompt();
 
@@ -211,14 +211,14 @@ const PromptBuilder = () => {
       </div>
     </div>
   );
-};
+}
 
 /**
  * Renders the root application component.
  */
-const App = () => {
+function App() {
   return <PromptBuilder />;
-};
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
