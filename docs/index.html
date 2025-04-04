@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+
+    <title>Reasoning Prompt Builder</title>
+    <meta name="description"
+        content="Webapp for creating structured LLM prompts for reasoning tasks" />
+
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <script defer type="text/babel" src="app.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <div class="loading-placeholder">
+            <h1>Reasoning Prompt Builder</h1>
+            <p class="loading-text">Loading application...</p>
+        </div>
+    </div>
+    <noscript>
+        <div class="noscript-message">
+            <h1>Reasoning Prompt Builder</h1>
+            <p>
+                This application requires JavaScript to function. Please
+                enable JavaScript in your browser settings.
+            </p>
+        </div>
+    </noscript>
+</body>
+
+</html>
