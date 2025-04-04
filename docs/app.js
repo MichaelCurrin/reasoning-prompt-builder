@@ -134,7 +134,7 @@ function PromptBuilder() {
       </header>
       <p>
         A simple tool for creating structured LLM prompts for reasoning tasks.
-        Such as using "Reasoning" or "Deep Think" modes or {' '}
+        Such as using "Reasoning" or "Deep Think" modes or{' '}
         <a
           href="https://openai.com/o1/"
           target="_blank"
@@ -149,7 +149,8 @@ function PromptBuilder() {
         this{' '}
         <a href="https://www.linkedin.com/pulse/anatomy-01-prompt-enhanced-template-alex-covo-jslee/">
           blog post
-        </a>.
+        </a>
+        .
       </p>
       <p>
         {' '}
@@ -182,7 +183,9 @@ function PromptBuilder() {
             onChange={(e) =>
               updateSection(SECTION_KEYS.RETURN_FORMAT, e.target.value)
             }
-            placeholder={"e.g. A bullet list. \ne.g. A short blog post. \ne.g. Return a JSON object with: title (string), key_findings (array of strings), methodology (string), and limitations (array of strings)."}
+            placeholder={
+              'e.g. A bullet list. \ne.g. A short blog post. \ne.g. Return a JSON object with: title (string), key_findings (array of strings), methodology (string), and limitations (array of strings).'
+            }
             isRequired={true}
           />
           <InputField
@@ -233,7 +236,9 @@ function PromptBuilder() {
             onChange={(e) =>
               updateSection(SECTION_KEYS.EVALUATION_CRITERIA, e.target.value)
             }
-            placeholder={'e.g.\n- Relevance to the topic \n- thoroughness in covering all points\n- accuracy of information\n- adherence to the specified format.'}
+            placeholder={
+              'e.g.\n- Relevance to the topic \n- thoroughness in covering all points\n- accuracy of information\n- adherence to the specified format.'
+            }
             isRequired={false}
           />
         </div>
