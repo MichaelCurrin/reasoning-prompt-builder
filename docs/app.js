@@ -15,6 +15,50 @@
  * @property {PromptSection} evaluationCriteria - The evaluation criteria section
  */
 
+const SECTION_KEYS = {
+  GOAL: 'goal',
+  RETURN_FORMAT: 'returnFormat',
+  WARNINGS: 'warnings',
+  CONTEXT_DUMP: 'contextDump',
+  STYLE_AND_TONE: 'styleAndTone',
+  SAMPLE_OUTPUT: 'sampleOutput',
+  EVALUATION_CRITERIA: 'evaluationCriteria',
+};
+
+/**
+ * InputField component for rendering a textarea input.
+ *
+ * @param {Object} props - The component props
+ * @param {string} props.id - The id for the textarea
+ * @param {string} props.label - The label for the textarea
+ * @param {string} props.value - The current value of the textarea
+ * @param {function} props.onChange - The function to call on change
+ * @param {string} props.placeholder - The placeholder text
+ * @param {boolean} [props.isRequired=false] - Whether the field is required
+ * @returns {JSX.Element} The InputField component
+ */
+function InputField({
+  id,
+  label,
+  value,
+  onChange,
+  placeholder,
+  isRequired = false,
+}) {
+  return (
+    <div className="form-group">
+      <label htmlFor={id}>{label}</label>
+      <textarea
+        id={id}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        required={isRequired}
+      />
+    </div>
+  );
+}
+
 /**
  * A form component for building structured prompts.
  *
@@ -22,18 +66,21 @@
  */
 function PromptBuilder() {
   const [sections, setSections] = React.useState({
-    goal: { title: 'Goal', content: '' },
-    returnFormat: { title: 'Return Format', content: '' },
-    warnings: { title: 'Warnings', content: '' },
-    contextDump: { title: 'Context Dump', content: '' },
-    styleAndTone: { title: 'Style and Tone', content: '' },
-    sampleOutput: { title: 'Sample Output', content: '' },
-    evaluationCriteria: { title: 'Evaluation Criteria', content: '' },
+    [SECTION_KEYS.GOAL]: { title: 'Goal', content: '' },
+    [SECTION_KEYS.RETURN_FORMAT]: { title: 'Return Format', content: '' },
+    [SECTION_KEYS.WARNINGS]: { title: 'Warnings', content: '' },
+    [SECTION_KEYS.CONTEXT_DUMP]: { title: 'Context Dump', content: '' },
+    [SECTION_KEYS.STYLE_AND_TONE]: { title: 'Style and Tone', content: '' },
+    [SECTION_KEYS.SAMPLE_OUTPUT]: { title: 'Sample Output', content: '' },
+    [SECTION_KEYS.EVALUATION_CRITERIA]: {
+      title: 'Evaluation Criteria',
+      content: '',
+    },
   });
   const [copyStatus, setCopyStatus] = React.useState('Copy');
 
   /**
-   * Updates a section's content and regenerates the preview.
+   * Updates a section's content.
    *
    * @param {keyof Sections} sectionKey - The key of the section to update
    * @param {string} content - The new content
@@ -120,104 +167,75 @@ function PromptBuilder() {
       <div className="two-pane-layout">
         <div className="input-pane">
           <h2>Required Inputs</h2>
-          <div className="form-group">
-            <label htmlFor="section-goal">Goal</label>
-            <p>
-              Clearly define your objective, such as the desired outcome or the
-              question you need answered.{' '}
-            </p>
-            <textarea
-              id="section-goal"
-              value={sections.goal.content}
-              onChange={(e) => updateSection('goal', e.target.value)}
-              placeholder="e.g. Create a concise technical summary of the provided research paper, highlighting key findings and methodology'"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="section-format">Return Format</label>
-            <p>Desired format of the output.</p>
-            <textarea
-              id="section-format"
-              value={sections.returnFormat.content}
-              onChange={(e) => updateSection('returnFormat', e.target.value)}
-              placeholder={
-                'e.g. A bullet list. \ne.g. A short blog post. \ne.g. Return a JSON object with: title (string), key_findings (array of strings), methodology (string), and limitations (array of strings).'
-              }
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="section-warnings">Warnings</label>
-            <p>
-              Tell the model to be careful and pay special attention to certain
-              aspects.{' '}
-            </p>
-            <textarea
-              id="section-warnings"
-              value={sections.warnings.content}
-              onChange={(e) => updateSection('warnings', e.target.value)}
-              placeholder="e.g. Maintain scientific accuracy. Do not speculate beyond the paper's content. Flag any statistical inconsistencies found."
-              required
-            />
-          </div>
+          <InputField
+            id="section-goal"
+            label="Goal"
+            value={sections[SECTION_KEYS.GOAL].content}
+            onChange={(e) => updateSection(SECTION_KEYS.GOAL, e.target.value)}
+            placeholder="e.g. Create a concise technical summary of the provided research paper, highlighting key findings and methodology"
+            isRequired={true}
+          />
+          <InputField
+            id="section-format"
+            label="Return Format"
+            value={sections[SECTION_KEYS.RETURN_FORMAT].content}
+            onChange={(e) =>
+              updateSection(SECTION_KEYS.RETURN_FORMAT, e.target.value)
+            }
+            placeholder="e.g. A bullet list. \ne.g. A short blog post. \ne.g. Return a JSON object with: title (string), key_findings (array of strings), methodology (string), and limitations (array of strings)."
+            isRequired={true}
+          />
+          <InputField
+            id="section-warnings"
+            label="Warnings"
+            value={sections[SECTION_KEYS.WARNINGS].content}
+            onChange={(e) =>
+              updateSection(SECTION_KEYS.WARNINGS, e.target.value)
+            }
+            placeholder="e.g. Maintain scientific accuracy. Do not speculate beyond the paper's content. Flag any statistical inconsistencies found."
+            isRequired={false}
+          />
           <h2>Optional Inputs</h2>
-
-          <div className="form-group">
-            <label htmlFor="section-context">Context Dump</label>
-            <textarea
-              id="section-context"
-              value={sections.contextDump.content}
-              onChange={(e) => updateSection('contextDump', e.target.value)}
-              placeholder="A few paragraphs of content such as background research or the content to transform with."
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="section-style">Style and Tone</label>
-            <p>The desired style and tone for the output.</p>
-            <textarea
-              id="section-style"
-              value={sections.styleAndTone.content}
-              onChange={(e) => updateSection('styleAndTone', e.target.value)}
-              placeholder="e.g. Formal and academic. Use technical language appropriate for a professional audience."
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="section-sample-output">Sample Output</label>
-            <p>
-              Provide an example of the expected output so it can match the
-              approach of structure and style.
-            </p>
-            <textarea
-              id="section-sample-output"
-              value={sections.sampleOutput.content}
-              onChange={(e) => updateSection('sampleOutput', e.target.value)}
-              placeholder="Paste your existing content here."
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="section-evaluation-criteria">
-              Evaluation Criteria
-            </label>
-            <p>
-              Guide the AI on what to prioritize. e.g. relevance, thoroughness,
-              accuracy, format.
-            </p>
-            <textarea
-              id="section-evaluation-criteria"
-              value={sections.evaluationCriteria.content}
-              onChange={(e) =>
-                updateSection('evaluationCriteria', e.target.value)
-              }
-              placeholder={
-                'e.g.\n- Relevance to the topic \n- thoroughness in covering all points\n- accuracy of information\n- adherence to the specified format.'
-              }
-            />
-          </div>
+          <InputField
+            id="section-context"
+            label="Context Dump"
+            value={sections[SECTION_KEYS.CONTEXT_DUMP].content}
+            onChange={(e) =>
+              updateSection(SECTION_KEYS.CONTEXT_DUMP, e.target.value)
+            }
+            placeholder="A few paragraphs of content such as background research or the content to transform with."
+            isRequired={false}
+          />
+          <InputField
+            id="section-style"
+            label="Style and Tone"
+            value={sections[SECTION_KEYS.STYLE_AND_TONE].content}
+            onChange={(e) =>
+              updateSection(SECTION_KEYS.STYLE_AND_TONE, e.target.value)
+            }
+            placeholder="e.g. Formal and academic. Use technical language appropriate for a professional audience."
+            isRequired={false}
+          />
+          <InputField
+            id="section-sample-output"
+            label="Sample Output"
+            value={sections[SECTION_KEYS.SAMPLE_OUTPUT].content}
+            onChange={(e) =>
+              updateSection(SECTION_KEYS.SAMPLE_OUTPUT, e.target.value)
+            }
+            placeholder="Paste your existing content here."
+            isRequired={false}
+          />
+          <InputField
+            id="section-evaluation-criteria"
+            label="Evaluation Criteria"
+            value={sections[SECTION_KEYS.EVALUATION_CRITERIA].content}
+            onChange={(e) =>
+              updateSection(SECTION_KEYS.EVALUATION_CRITERIA, e.target.value)
+            }
+            placeholder="e.g.\n- Relevance to the topic \n- thoroughness in covering all points\n- accuracy of information\n- adherence to the specified format."
+            isRequired={false}
+          />
         </div>
 
         <div className="preview-section">
