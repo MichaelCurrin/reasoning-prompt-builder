@@ -127,6 +127,7 @@ function PromptBuilder() {
               value={sections.goal.content}
               onChange={(e) => updateSection('goal', e.target.value)}
               placeholder="e.g. Create a concise technical summary of the provided research paper, highlighting key findings and methodology'"
+              required
             />
           </div>
 
@@ -140,6 +141,7 @@ function PromptBuilder() {
               placeholder={
                 'e.g. A bullet list. \ne.g. A short blog post. \ne.g. Return a JSON object with: title (string), key_findings (array of strings), methodology (string), and limitations (array of strings).'
               }
+              required
             />
           </div>
 
@@ -154,6 +156,7 @@ function PromptBuilder() {
               value={sections.warnings.content}
               onChange={(e) => updateSection('warnings', e.target.value)}
               placeholder="e.g. Maintain scientific accuracy. Do not speculate beyond the paper's content. Flag any statistical inconsistencies found."
+              required
             />
           </div>
           <h2>Optional Inputs</h2>
