@@ -134,13 +134,13 @@ function PromptBuilder() {
       </header>
       <p>
         A simple tool for creating structured LLM prompts for reasoning tasks.
-        Such as using "Reasoning" or "Deep Think" modes or the{' '}
+        Such as using "Reasoning" or "Deep Think" modes or {' '}
         <a
           href="https://openai.com/o1/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          OpenAI O1 Model
+          OpenAI's o1 Model
         </a>
         .
       </p>
