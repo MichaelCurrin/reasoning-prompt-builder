@@ -46,7 +46,7 @@ function PromptBuilder() {
   }
 
   /**
-   * Generates the formatted prompt from all sections.
+   * Generate the formatted prompt from all sections.
    *
    * @returns {string} The formatted prompt text
    */
@@ -58,7 +58,7 @@ function PromptBuilder() {
   }
 
   /**
-   * Copies the formatted prompt to clipboard.
+   * Copy the formatted prompt to clipboard.
    */
   async function copyToClipboard() {
     try {
@@ -233,9 +233,6 @@ function PromptBuilder() {
   );
 }
 
-/**
- * Renders the root application component.
- */
 function App() {
   return <PromptBuilder />;
 }
