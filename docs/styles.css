@@ -34,7 +34,7 @@ header {
   box-sizing: border-box;
 }
 
-.preview-section {
+.result-section {
   flex: 1;
   min-width: 0;
   position: sticky;
@@ -65,14 +65,14 @@ textarea {
   box-sizing: border-box;
 }
 
-.preview-container {
+.result-container {
   background: #f5f5f5;
   padding: 20px;
   border-radius: 4px;
   border: 1px solid #ddd;
 }
 
-.preview {
+.result {
   margin-top: 15px;
   background: #3e3e3e;
   padding: 15px;
@@ -80,7 +80,7 @@ textarea {
   overflow-x: auto;
 }
 
-.preview pre {
+.result pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   margin: 0;
@@ -111,7 +111,7 @@ textarea {
     flex-direction: column;
   }
 
-  .preview-section {
+  .result-section {
     position: static;
   }
 }

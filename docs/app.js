@@ -238,9 +238,9 @@ function PromptBuilder() {
           />
         </div>
 
-        <div className="preview-section">
-          <h2>Preview</h2>
-          <div className="preview-container">
+        <div className="result-section">
+          <h2>Result</h2>
+          <div className="result-container">
             <button
               className="button copy-button"
               onClick={copyToClipboard}
@@ -248,7 +248,7 @@ function PromptBuilder() {
             >
               {copyStatus} 📋
             </button>
-            <div className="preview">
+            <div className="result">
               <pre>{formattedPrompt || ''}</pre>
             </div>
           </div>
