@@ -1,5 +1,5 @@
 # Reasoning Prompt Builder
-> Webapp for creating structured LLM prompts for reasoning tasks
+> Web app for creating structured LLM prompts for reasoning tasks
 
 ## Features
 

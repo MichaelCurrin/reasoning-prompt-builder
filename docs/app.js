@@ -78,7 +78,11 @@ function PromptBuilder() {
       <header>
         <h1>Reasoning Prompt Builder</h1>
         <a href="https://github.com/MichaelCurrin/reasoning-prompt-builder">
-          <img src="https://img.shields.io/static/v1?label=MichaelCurrin&amp;message=reasoning-prompt-builder&amp;color=blue&amp;labelColor=35495e&amp;logo=github" alt="MichaelCurrin - reasoning-prompt-builder repo badge" title="Go to MichaelCurrin - reasoning-prompt-builder repo on GitHub" />
+          <img
+            src="https://img.shields.io/static/v1?label=MichaelCurrin&amp;message=reasoning-prompt-builder&amp;color=blue&amp;labelColor=35495e&amp;logo=github"
+            alt="MichaelCurrin - reasoning-prompt-builder repo badge"
+            title="Go to MichaelCurrin - reasoning-prompt-builder repo on GitHub"
+          />
         </a>
       </header>
       <p>
@@ -111,7 +115,7 @@ function PromptBuilder() {
         >
           Easy Prompt
         </a>{' '}
-        webapp.
+        web app.
       </p>
       <div className="two-pane-layout">
         <div className="input-pane">
