@@ -75,7 +75,12 @@ function PromptBuilder() {
 
   return (
     <div className="container">
-      <h1>Reasoning Prompt Builder</h1>
+      <header>
+        <h1>Reasoning Prompt Builder</h1>
+        <a href="https://github.com/MichaelCurrin/reasoning-prompt-builder">
+          <img src="https://img.shields.io/static/v1?label=MichaelCurrin&amp;message=reasoning-prompt-builder&amp;color=blue&amp;labelColor=35495e&amp;logo=github" alt="MichaelCurrin - reasoning-prompt-builder repo badge" title="Go to MichaelCurrin - reasoning-prompt-builder repo on GitHub" />
+        </a>
+      </header>
       <p>
         A simple tool for creating structured LLM prompts for reasoning tasks.
         Such as using "Reasoning" or "Deep Think" modes or the{' '}
