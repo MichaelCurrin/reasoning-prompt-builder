@@ -43,11 +43,13 @@ function InputField({
   value,
   onChange,
   placeholder,
+  note,
   isRequired = false,
 }) {
   return (
     <div className="form-group">
       <label htmlFor={id}>{label}</label>
+      <p>{note}</p>
       <textarea
         id={id}
         value={value}
@@ -173,7 +175,8 @@ function PromptBuilder() {
             label="Goal *"
             value={sections[SECTION_KEYS.GOAL].content}
             onChange={(e) => updateSection(SECTION_KEYS.GOAL, e.target.value)}
-            placeholder="e.g. Create a concise technical summary of the provided research paper, highlighting key findings and methodology"
+            note="Enter the objective. Such as the problem to solve or the desired outcome."
+            placeholder="e.g. Create a concise technical summary of the provided research paper, highlighting key findings and methodology."
             isRequired={true}
           />
           <InputField
@@ -183,6 +186,7 @@ function PromptBuilder() {
             onChange={(e) =>
               updateSection(SECTION_KEYS.RETURN_FORMAT, e.target.value)
             }
+            note="Describe the output format."
             placeholder={
               'e.g. A bullet list. \ne.g. A short blog post. \ne.g. Return a JSON object with: title (string), key_findings (array of strings), methodology (string), and limitations (array of strings).'
             }
@@ -195,6 +199,7 @@ function PromptBuilder() {
             onChange={(e) =>
               updateSection(SECTION_KEYS.WARNINGS, e.target.value)
             }
+            note="Instructions for things to be careful of and to pay special attention to."
             placeholder="e.g. Maintain scientific accuracy. Do not speculate beyond the paper's content. Flag any statistical inconsistencies found."
             isRequired={false}
           />
@@ -206,7 +211,8 @@ function PromptBuilder() {
             onChange={(e) =>
               updateSection(SECTION_KEYS.CONTEXT_DUMP, e.target.value)
             }
-            placeholder="A few paragraphs of content such as background research or the content to transform with."
+            note="Add a few paragraphs of background info or research."
+            placeholder="Add your content here."
             isRequired={false}
           />
           <InputField
@@ -216,6 +222,7 @@ function PromptBuilder() {
             onChange={(e) =>
               updateSection(SECTION_KEYS.STYLE_AND_TONE, e.target.value)
             }
+            note="Instructions for style and tone of writing, the intended audience, or the perspective to write from."
             placeholder="e.g. Formal and academic. Use technical language appropriate for a professional audience."
             isRequired={false}
           />
@@ -226,7 +233,8 @@ function PromptBuilder() {
             onChange={(e) =>
               updateSection(SECTION_KEYS.SAMPLE_OUTPUT, e.target.value)
             }
-            placeholder="Paste your existing content here."
+            note="Give existing content that can be used a reference for style and structure."
+            placeholder="Add existing content here."
             isRequired={false}
           />
           <InputField
@@ -236,6 +244,7 @@ function PromptBuilder() {
             onChange={(e) =>
               updateSection(SECTION_KEYS.EVALUATION_CRITERIA, e.target.value)
             }
+            notes="What measures to use for the LLM to determine the quality of its answer."
             placeholder={
               'e.g.\n- Relevance to the topic \n- thoroughness in covering all points\n- accuracy of information\n- adherence to the specified format.'
             }
