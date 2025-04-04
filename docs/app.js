@@ -149,7 +149,7 @@ function PromptBuilder() {
         this{' '}
         <a href="https://www.linkedin.com/pulse/anatomy-01-prompt-enhanced-template-alex-covo-jslee/">
           blog post
-        </a>
+        </a>.
       </p>
       <p>
         {' '}
